@@ -1,0 +1,6 @@
+<j:jelly xmlns:j="jelly:core">
+  <j:set var="upInfo" value="${it.getStreamInfo(job,it.UPSTREAM)}"/>
+  <j:set var="downInfo" value="${it.getStreamInfo(job,it.DOWNSTREAM)}"/>
+  <td>${upInfo}</td>
+  <td>${downInfo}</td>
+</j:jelly>
