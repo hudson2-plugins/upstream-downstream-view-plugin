@@ -14,8 +14,11 @@ import net.sf.json.JSONObject;
 import org.kohsuke.stapler.StaplerRequest;
 
 /**
- * UpstreamDownstreamViewColumn
- * 
+ * UpstreamDownstreamViewColumn, this plugin allows used to see the two additional
+ * colums containing the Upstreamed and Downstreamed jobs for the particular job. 
+ * Additionally this plugin in the current version cut the column length to 50 chars
+ *  in case if the job name summary length is less than the 50 or it put one job name
+ *  in the column in case if the job name is fewer than 50 chars.
  * 
  * 12/05/2011
  * 
@@ -29,7 +32,10 @@ public class UpDownStreamViewColumn extends ListViewColumn {
 	private static final int MAX_COLUMN_WIDTH = 50;
 
 	/**
-	 * @return HTML String containing the cron expression of each Trigger on the
+	 * This method will returns the HTML representation of the 
+	 * Upstreamed/Downstreamed jobs for the particular master job.
+	 *
+	 * @return HTML String containing the Upstreamed/ Downstreamed jobs undert the
 	 *         Job (when available).
 	 */
 	public String getStreamInfo(Job job, int streamType) {
