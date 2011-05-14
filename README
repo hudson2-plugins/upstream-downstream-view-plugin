@@ -1,0 +1,3 @@
+Hudson Upstream Downstream View Plugin
+To create upstream-downstream-view.hpi please use following command:
+mvn clean install
