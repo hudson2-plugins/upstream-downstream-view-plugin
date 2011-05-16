@@ -8,7 +8,7 @@
 	</parent>
         <!-- Artifact Identification -->
 	<artifactId>upstream-downstream-view</artifactId>
-	<version>1.002-SNAPSHOT</version>
+	<version>1.002</version>
 	<url>http://wiki.hudson-ci.org/display/HUDSON/Upstream+Downstream+Column+Plugin</url>
 	<packaging>hpi</packaging>
 	<name>Hudson Upstream Downstream Column Plugin</name>
