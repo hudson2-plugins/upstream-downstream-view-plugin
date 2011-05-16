@@ -1,38 +1,74 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+        <!-- Parent -->
 	<parent>
-		<groupId>org.jvnet.hudson.plugins</groupId>
-		<artifactId>hudson-plugin-parent</artifactId>
-		<version>1.350</version> <!-- which version of Hudson is this plugin built against? -->
-		<relativePath>../pom.xml</relativePath>
-	</parent>	
-
+	  <groupId>org.jvnet.hudson.plugins</groupId>
+	  <artifactId>plugin</artifactId>
+	  <version>1.392</version>
+	</parent>
+        <!-- Artifact Identification -->
 	<artifactId>upstream-downstream-view</artifactId>
 	<version>1.001-SNAPSHOT</version>
 	<url>http://wiki.hudson-ci.org/display/HUDSON/Upstream+Downstream+Column+Plugin</url>
 	<packaging>hpi</packaging>
 	<name>Hudson Upstream Downstream Column Plugin</name>
 	<description>Provides the new column view for Upstreamed/Downstreamed jobs</description>
-
-    <licenses>
-        <license>
+	<!--License information -->
+	<licenses>
+	  <license>
             <name>The MIT license</name>
             <url>http://www.opensource.org/licenses/mit-license.php</url>
             <distribution>repo</distribution>
-        </license>
-    </licenses>
-    
-    <scm>
-			<connection>scm:git:ssh://github.com/hudson-plugins/upstream-downstream-view-plugin.git</connection>
-			<developerConnection>scm:git:ssh://git@github.com/hudson-plugins/upstream-downstream-view-plugin.git</developerConnection>
-			<url>https://github.com/hudson-plugins/upstream-downstream-view-plugin</url>
+	  </license>
+	</licenses>
+	<!--Source code storage information -->
+	<scm>
+	  <connection>scm:git:git://github.com/hudson-plugins/upstream-downstream-view-plugin.git</connection>
+	  <developerConnection>scm:git:ssh://git@github.com/hudson-plugins/upstream-downstream-view-plugin.git</developerConnection>
+	  <url>https://github.com/hudson-plugins/upstream-downstream-view-plugin</url>
 	</scm>
-
+	<!--Dev Team information -->
 	<developers>
-		<developer>
-			<id>kenji.kawaji</id>
-			<name>Kenji Kawaji</name>
-			<email>kenji.kawaji@gmail.com</email>
-		</developer>
+	  <developer>
+	    <id>kenji.kawaji</id>
+	    <name>Kenji Kawaji</name>
+	    <email>kenji.kawaji@gmail.com</email>
+	  </developer>
 	</developers>
+
+<!--Profiles -->
+<profiles>
+        <profile>
+            <id>hudson</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>sonatype-nexus-snapshots</id>
+                    <name>Sonatype Nexus Snapshots</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>sonatype-nexus-staging</id>
+                    <name>Nexus Release Repository</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>   
+            <build>
+                <plugins>                 
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+    </profile>
+</profiles> 
 </project>
